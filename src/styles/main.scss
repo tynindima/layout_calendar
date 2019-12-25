@@ -1,3 +1,51 @@
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 730px;
+  margin-top: 150px;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+
+  div {
+    height: 100px;
+    width: 100px;
+    background-color: #eee;
+    border: 1px solid black;
+    margin: 1px;
+  }
+
+  @for $i from 1 through 31 {
+    div:nth-child(#{$i}):after {
+      content: "#{$i}";
+      display: block;
+      line-height: 100px;
+      text-align: center;
+    }
+  }
+
+  div:hover {
+    position: relative;
+    bottom: 20px;
+    transition: bottom 0.5s;
+    cursor: pointer;
+    background-color: pink;
+  }
+}
+
+.calendar-30 {
+
+  div:first-child {
+    margin-left: 105px;
+  }
+
+  div:last-child {
+    display: none;
+  }
 }
