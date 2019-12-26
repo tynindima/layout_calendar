@@ -1,3 +1,13 @@
+@import "alternative-days";
+
+@mixin box {
+  height: 100px;
+  width: 100px;
+  background-color: #eee;
+  border: 1px solid black;
+  margin: 1px;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -14,11 +24,7 @@ body {
   font-size: 30px;
 
   div {
-    height: 100px;
-    width: 100px;
-    background-color: #eee;
-    border: 1px solid black;
-    margin: 1px;
+    @include box;
   }
 
   @for $i from 1 through 31 {
@@ -40,12 +46,13 @@ body {
 }
 
 .calendar-30 {
-
-  div:first-child {
-    margin-left: 105px;
-  }
-
   div:last-child {
     display: none;
+  }
+}
+
+.calendar-tue {
+  div:first-child {
+    margin-left: 105px;
   }
 }
