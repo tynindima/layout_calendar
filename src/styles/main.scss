@@ -1,11 +1,15 @@
-@import "alternative-days";
+$days: "mon" 0, "tue" 1, "wed" 2, "thu" 3, "fri" 4, "sat" 5, "sun" 6;
 
 @mixin box {
+  display: block;
   height: 100px;
   width: 100px;
   background-color: #eee;
   border: 1px solid black;
-  margin: 1px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  line-height: 100px;
+  text-align: center;
 }
 
 body {
@@ -24,35 +28,32 @@ body {
   font-size: 30px;
 
   div {
-    @include box;
+    display: none;
+  }
+
+  @for $i from 28 through 31 {
+    &-#{$i} div:nth-child(-n+#{$i}) {
+      @include box;
+    }
   }
 
   @for $i from 1 through 31 {
     div:nth-child(#{$i}):after {
       content: "#{$i}";
-      display: block;
-      line-height: 100px;
-      text-align: center;
+    }
+  }
+
+  @each $day, $i in $days {
+    &-#{$day} div:first-child {
+      margin-left: #{100*$i + 3*$i}px;
     }
   }
 
   div:hover {
     position: relative;
     bottom: 20px;
-    transition: bottom 0.5s;
+    transition: bottom 0.5s ease-in;
     cursor: pointer;
     background-color: pink;
-  }
-}
-
-.calendar-30 {
-  div:last-child {
-    display: none;
-  }
-}
-
-.calendar-tue {
-  div:first-child {
-    margin-left: 105px;
   }
 }
