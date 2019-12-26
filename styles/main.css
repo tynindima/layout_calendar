@@ -154,8 +154,8 @@ body {
     margin-left: 618px; }
   .calendar div:hover {
     position: relative;
-    -webkit-transform: translateY(20px);
-            transform: translateY(20px);
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
     cursor: pointer;
     background-color: pink; }
 
